@@ -53,9 +53,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         mMap.getUiSettings().setZoomControlsEnabled(true);
-        LatLng Quevedo = new LatLng(-1.0125996, -79.4539186);
 
-       mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Quevedo,15));
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -84,6 +82,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         PolygonOptions polygonOptions = new PolygonOptions().addAll(latLngList).clickable(true);
         polygon = mMap.addPolygon(polygonOptions);
+
+    }
+    public void animarcamara(View view){
+        LatLng Quevedo = new LatLng(-1.0125996, -79.4539186);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Quevedo,15));
+
+    }
+    public void movercamara(View view){
+        LatLng Quevedo = new LatLng(-1.0125996, -79.4539186);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Quevedo,15));
 
     }
 

@@ -22,15 +22,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Grosor de poligono"
+            android:text="Opciones"
             android:textStyle="bold"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:orientation="vertical"
+            >
             <Button
                 android:id="@+id/id_limpiar"
                 android:layout_width="wrap_content"
@@ -46,6 +46,22 @@
                 android:text="Dibujar Polinomio"
                 android:backgroundTint="@color/Blue"
                 android:onClick="dibujarpoligono"
+                />
+            <Button
+                android:id="@+id/id_animarcamera"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Animar camera"
+                android:backgroundTint="@color/Blue"
+                android:onClick="animarcamara"
+                />
+            <Button
+                android:id="@+id/id_movercamera"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Mover camera"
+                android:backgroundTint="@color/Blue"
+                android:onClick="movercamara"
                 />
         </LinearLayout>
 
