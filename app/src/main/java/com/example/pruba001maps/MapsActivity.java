@@ -4,7 +4,9 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -28,7 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Polygon polygon = null;
     List<LatLng> latLngList = new ArrayList<>();
     List<Marker> markerList = new ArrayList<>();
-
+RadioButton rbLinea;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        rbLinea = findViewById(R.id.idlienar);
     }
 
     /**
@@ -51,7 +54,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -61,11 +64,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Marker marker = mMap.addMarker(markerOptions);
                 latLngList.add(latLng);
                 markerList.add(marker);
-                if(polyline!=null) polyline.remove();
-                if(polygon!=null) polygon.remove();
+                if(rbLinea.isChecked()){
+                    if(polyline!=null) polyline.remove();
+                    if(polygon!=null) polygon.remove();
 
-                PolylineOptions polylineOptions = new PolylineOptions().addAll(latLngList).clickable(true);
-                polyline = mMap.addPolyline(polylineOptions);
+                    PolylineOptions polylineOptions = new PolylineOptions().addAll(latLngList).clickable(true);
+                    polyline = mMap.addPolyline(polylineOptions);
+                }
+
+
+
             }
         });
     }
@@ -77,13 +85,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latLngList.clear();
     }
     public void dibujarpoligono(View view){
-        if(polyline!=null) polyline.remove();
-        if(polygon!=null) polygon.remove();
+        try {
+            if(polyline!=null) polyline.remove();
+            if(polygon!=null) polygon.remove();
 
-        PolygonOptions polygonOptions = new PolygonOptions().addAll(latLngList).clickable(true);
-        polygon = mMap.addPolygon(polygonOptions);
+            PolygonOptions polygonOptions = new PolygonOptions().addAll(latLngList).clickable(true);
+            polygon = mMap.addPolygon(polygonOptions);
+        } catch (Exception e){
+
+        }
+
 
     }
+
+
+
+
     public void animarcamara(View view){
         LatLng Quevedo = new LatLng(-1.0125996, -79.4539186);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Quevedo,15));
@@ -92,6 +109,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void movercamara(View view){
         LatLng Quevedo = new LatLng(-1.0125996, -79.4539186);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Quevedo,15));
+
+    }
+    public void mapaNormal(View view){
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
+    }
+    public void mapaHybrido(View view){
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
+    }
+    public void mapaTerrain(View view){
+        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
+    }
+    public void mapaSatelital(View view){
+        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
 
     }
 

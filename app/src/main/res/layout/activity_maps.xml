@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
+
 <fragment
     android:id="@+id/map"
     android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -29,24 +31,38 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             >
-            <Button
-                android:id="@+id/id_limpiar"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Limpiar Polinomio"
-                android:backgroundTint="@color/Blue"
-                android:onClick="limpiar"
-                />
+
             <Button
                 android:id="@+id/id_poligono"
-                android:layout_width="wrap_content"
+                android:layout_width="169dp"
                 android:layout_height="match_parent"
-                android:text="Dibujar Polinomio"
                 android:backgroundTint="@color/Blue"
                 android:onClick="dibujarpoligono"
-                />
+                android:text="Dibujar Poligono" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/idlienar"
+                    android:layout_width="118dp"
+                    android:layout_height="wrap_content"
+                    android:text="Trasar linea" />
+
+                <RadioButton
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Marcador" />
+            </RadioGroup>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
             <Button
                 android:id="@+id/id_animarcamera"
                 android:layout_width="wrap_content"
@@ -63,7 +79,62 @@
                 android:backgroundTint="@color/Blue"
                 android:onClick="movercamara"
                 />
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de mapa"
+            android:textStyle="bold"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="horizontal">
+                <RadioButton
+                    android:layout_width="94dp"
+                    android:layout_height="wrap_content"
+                    android:text="Satelite"
+                    android:onClick="mapaSatelital"
+                    />
+                <RadioButton
+                    android:layout_width="92dp"
+                    android:layout_height="wrap_content"
+                    android:text="Normal" android:onClick="mapaNormal" />
+                <RadioButton
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:text="Hibrido" android:onClick="mapaHybrido" />
+                <RadioButton
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:text="Terreste" android:onClick="mapaTerrain" />
+
+
+            </RadioGroup>
         </LinearLayout>
 
     </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="215dp"
+        android:clickable="true"
+        android:onClick="limpiar"
+        android:backgroundTint="@color/Blue"
+        android:src="@android:drawable/ic_menu_delete" />
 </RelativeLayout>
