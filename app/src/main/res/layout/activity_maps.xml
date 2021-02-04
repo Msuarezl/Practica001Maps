@@ -36,7 +36,7 @@
 
             <Button
                 android:id="@+id/id_poligono"
-                android:layout_width="169dp"
+                android:layout_width="140dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/Blue"
                 android:onClick="dibujarpoligono"
@@ -55,7 +55,9 @@
                 <RadioButton
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:text="Marcador" />
+                    android:text="Marcador"
+                    android:checked="true"
+                    />
             </RadioGroup>
 
         </LinearLayout>
